@@ -1,0 +1,59 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+<title>
+    CONTACT LIST: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+<div class="formtop paddingleft paddingright event-table">
+
+    <h1 class="list-contact-title"> Recieved Messages/Enquiries</h1>
+    <!-- <div class="list-contact-headers "> -->
+    <!-- <div class=""> -->
+    <table>
+        <tr>
+            <th>SNO</th>
+            <th>Date Sent</th>
+            <th>Sender</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Messages/Enquiries</th>
+            <th>Delete</th>
+        </tr>
+
+
+        {% for contact in all_contacts %}
+        <tr>
+            <td class="td-class">
+                {{forloop.counter}}
+            </td>
+
+            <td class="td-class">
+                {{contact.sent_on}}
+            </td>
+            <td class="td-class">
+                {{contact.name}}
+            </td>
+            <td class="td-class">
+                {{contact.email}}
+            </td>
+            <td class="td-class">
+                {{contact.phone}}
+            </td>
+            <td class="td-class contact-enq-text">
+                {{contact.enquiry_reason|wordwrap:10}}
+            </td>
+            <td class="td-class">
+                <a style="color: white; background-color: rgb(170, 10, 10); font-weight: bolder; font-size: .8em; border: .05em solid red; border-radius: 1em; padding-inline: .3em; margin-inline-end: .1em;"
+                    href="/delete_contacts/{{contact.id}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

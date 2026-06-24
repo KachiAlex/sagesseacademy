@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Sagesse Academy Lugbe Website.">
+  <meta name="description" content="One of the best schools in Abuja Nigeria.">
+  <meta name="description" content="One of the best primary, nursery schools in Abuja Nigeria.">
+  <meta name="author" content="Sagesse Academy">
+  <meta name="location" content="Plot 789 Oyewum John Street, CRD Estate, FHA, Lugbe, Abuja Federal Capital Teritory.">
+  <meta name="keywords" content="sagesse academy home website">
+  {% load static %}
+  <script src="https://kit.fontawesome.com/b54bb0a15c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'sagapp/css/main.css' %}" />
+  {% comment %}
+  <link rel="shortcut icon" href="{% static 'sagapp/images/sagfavi.png' %}" type="image/png"> {% endcomment %}
+  <link rel="shortcut icon" href="{% static 'sagapp/images/sagdfav.png' %}" type="image/png">
+  <link rel="shortcut icon" {% load static %} href="{% static 'sagapp/images/sagesselogo2.jpeg' %}" type="image/jpeg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% load static %}
+  {% block title %}
+
+  {% endblock title %}
+
+</head>
+
+<body>
+  <div class="body-bg">
+    <div class="gen-margin">
+      {% include 'sagapp/navbar.html' %}
+
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer>
+      {% include 'sagapp/footer.html' %}
+    </footer>
+  </div>
+  {% load static %}
+  <script src="{% static 'sagapp/js/toggle.js' %}"></script>
+  <script src="{% static 'sagapp/js/msger.js' %}"></script>
+</body>
+
+</html>

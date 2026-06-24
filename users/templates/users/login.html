@@ -1,0 +1,49 @@
+{% extends 'sagapp/index.html' %}
+
+<!-- {% load crispy_forms_tags %} -->
+{% load static %}
+
+
+{% block title %}
+<title>
+    LOGIN PAGE: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+<div class="formtop"></div>
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+
+    <div class="userformsclass">
+        <div class="divh1">
+            <h2>School Admin Login</h2>
+            <div class="errormessage">
+                {% if messages %}
+                {% for message in messages %}
+                <p class="msger" style=" font-weight:bold; background-color: white;">
+                    {{message}}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="usern">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="formInput" name="username">
+        </div>
+        <div class="userpass">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="formInput" name="password">
+        </div>
+        <div class="loginsubmitDiv">
+            <button type="Submit" class="loginButton">Login <span><i
+                        class="fa-thin fa-paper-plane-top"></i></span></button>
+
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+<!--<button type="Submit" class="resetPassButton"><a href="{% url 'passwordreset' %}">Forgot Password
+                </a></button> -->

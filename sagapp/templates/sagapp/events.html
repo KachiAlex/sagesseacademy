@@ -1,0 +1,93 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+<title>
+    EVENTS: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+
+{% block content %}
+<div class="formtop paddingleft paddingright event-table">
+
+    <h1 class="list-contact-title"> LIST OF EVENTS</h1>
+    <table>
+        <tr>
+            <th>S/NO</th>
+            <th>Event ID</th>
+            <th>Title</th>
+            <th>Date/Time</th>
+            <th>Content</th>
+            <th>Photos</th>
+            <th>Edit/Add</th>
+        </tr>
+
+
+        {% for event in all_events %}
+        <tr>
+            <td class="td-class">
+                <div>
+                    <p> {{forloop.counter}}</p>
+                </div>
+            </td>
+            <td class="td-class">
+                <div>
+                    <p> {{event.id}}</p>
+                </div>
+            </td>
+            <td class="td-class">
+                <div>
+                    <p> {{event.title_of_event}}</p>
+                </div>
+            </td>
+            <td class="td-class">
+
+                <p style="text-align: center;">{{event.date_of_event}}</p>
+                <p style="text-align: center;">{{event.time_of_event}}</p>
+            </td>
+
+            <td class="td-class">
+                <p color="black">
+                    {{event.event_content}}
+                </p>
+            </td>
+            <td class="td-class">
+                <div class="photo-ev">
+                    {% if event.event_photo %}
+                    <p><img src="{{event.event_photo.url}}" alt="" srcset=""></p>
+                    {% endif %}
+                </div>
+            </td>
+
+            <td class="td-class">
+                <div>
+
+                    <div style=" place-content: end; margin-block: .7em; margin-inline: .3em; ">
+                        <a href="/edit_events/{{event.id}}/"
+                            style="color:white;  border: .02em solid black; border-radius: .5em; padding: .2em; background-color: gray; "><strong>Edit</strong></a></a>
+                    </div>
+                    <div style=" place-content: end; margin-block: .7em; margin-inline: .3em;"><a
+                            href="/delete_events/{{event.id}}/"
+                            style="color:white;  border: .02em solid black; border-radius: .5em; padding: .2em; background-color: rgb(158, 8, 8); "><strong>Delete</strong></a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div>
+    <p style="margin-inline-start: 3rem; margin-block: 2rem;">
+        <a href="{% url 'sagapp:add_events' %}"
+            style=" border: .03em solid black; border-radius: .2em; max-width: 9em; padding-inline: .5em; padding-block: .5em; text-align: center;  color: black;  font-weight: bolder;">Add
+            More
+            Events</a>
+        <!-- <p>
+        {{form.setevent}}
+    </p> -->
+    </p>
+
+</div>
+{% endblock %}

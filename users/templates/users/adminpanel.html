@@ -1,0 +1,28 @@
+{% extends 'sagapp/index.html' %}
+
+<!-- {% load crispy_forms_tags %} -->
+{% load static %}
+
+
+{% block title %}
+<title>
+    ADMIN PANEL | SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="adminpanel">
+    {% csrf_token %}
+
+    <div class="adminlinks">
+        <p><a href="{% url 'sagapp:add_events' %}">ADD EVENTS</a></p>
+    </div>
+    <div class="adminlinks">
+        <p><a href="{% url 'sagapp:view_contacts' %}">VIEW CONTACTS</a></p>
+    </div>
+</div>
+
+{% endblock %}

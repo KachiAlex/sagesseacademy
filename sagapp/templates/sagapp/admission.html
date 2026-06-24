@@ -1,0 +1,65 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+{% load l10n %}
+
+{% load static %}
+
+
+{% block title %}
+<title>
+    ADMISSION PAGE: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="admission">
+    <div class="maintopmargin">
+        <div class="admission-inner">
+            <h1>WE ARE ADMITTING</h1>
+            <h2>Enroll Now!</h2>
+            <div class="admission-inner-div"></div>
+        </div>
+    </div>
+    <div class="margin-top formtop">
+        <form class="adformsclass" action="/admission/" method="post">
+            {% csrf_token %}
+
+                <div class="divh1">
+                    <h2>Admission Form</h2>
+                </div>
+              
+                    {{form.first_name}}
+             
+                    {{form.middle_name}}
+              
+                    {{form.last_name}}
+        
+                    {{form.gender}}
+                
+                    {% localize on %}
+                    {{form.date_of_birth}}
+                    {% endlocalize %}
+          
+                    {{form.clas_of_admission}}
+              
+                    {{form.parent_name}}
+           
+                    {{form.parent_phone_number}}
+            
+                    {{form.parent_email}}
+           
+                    {{form.address}}
+          
+                <div class="submitDiv margin-down">
+                    <button type="Submit" class="submitButton">Submit</button>
+                    <button type="Reset" class="resetButton">Reset</button>
+
+                </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,259 @@
+{% extends 'sagapp/base.html' %} {% load static %} {% block title %}
+<title>HOME: SAGESSE ACADEMY</title>
+{% endblock title %}
+{% block content %}
+<div class="topline"></div>
+<div class="hero margin-bot skeleton">
+  <video autoplay loop muted plays-inline class="video-bg margin-top">
+    {% load static %}
+    <source src="{% static 'sagapp/images/intro.mp4' %}" type="video/mp4">
+  </video>
+  <div class="content paddingleft paddingright">
+    <p class="contenttitle">Excellent Academic Practices</p><br>
+    <p class="contenttitle">Give Your Child An Academic Legacy At </p>
+    <p class="contenttitle"><span>Sagesse Academy</span></p>
+  </div>
+</div>
+<div class="calltoaction">
+  <a href="{% url 'sagapp:admission' %}">Apply Now!</a>
+  <a href="{% url 'sagapp:contact' %}">Send Enquiry</a>
+</div>
+<div class="parteventsparent">
+  <!-- Summer Lesson -->
+  <div class="maind admission-ad paddingright paddingleft">
+    <div class="maind5">
+      <div class="maind5gr1">
+        <div>
+          <img src="{% static 'sagapp/images/sagesse_admission.jpg' %}" alt="" srcset="" />
+        </div>
+      </div>
+      <div class="maind5gr2">
+        <p class="maind-summer-p">Admission in progress
+        <p>
+        <p class="maind-summer-p2"><a href="{% url 'sagapp:admission' %}">ENROLL NOW!</a>
+        <p>
+      </div>
+    </div>
+  </div>
+
+  <div class="maind paddingright paddingleft">
+    <div class="maind2">
+      <div class="maind2gr1">
+        <div>
+          <img src="{% static 'sagapp/images/activepupils.png' %}" alt="" srcset="" />
+        </div>
+        <div class="maind-pdivs">
+          <p>Learning through participation.</p>
+        </div>
+      </div>
+      <div class="maind2gr2">
+        <div>
+          <img src="{% static 'sagapp/images/standard-learning.png' %}" alt="" srcset="" />
+        </div>
+        <div class="maind-pdivs">
+          <p>Standardized and quality education</p>
+        </div>
+      </div>
+      <div class="maind2gr3">
+        <div>
+          <img src="{% static 'sagapp/images/studentcentered.png' %}" alt="" srcset="" />
+        </div>
+        <div class="maind-pdivs">
+          <p>Student centered Learning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="partevents maintopmargin">
+  <div class="partitle">
+    <div>
+      <h1> EVENTS</h1>
+    </div>
+  </div>
+  <div class="partevents1">
+    {% for event in selectede1 %}
+    <div class="partevdates">
+      {{event.date_of_event|date:"d"}}
+      {{event.date_of_event|date:"M"}}
+    </div>
+    <hr>
+    <div class="partevtitle">
+      <p> {{event.title_of_event}} </p>
+    </div>
+
+    <div class="partevtime">
+      <p>{{event.time_of_event}}</p>
+    </div>
+    <div class="evphoto">
+      {% if event.event_photo %}
+      <p><img src="{{event.event_photo.url}}" alt="" srcset=""></p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="partevents2">
+    {% for event in selectede2 %}
+    <div class="partevdates">
+      {{event.date_of_event|date:"d"}}
+      {{event.date_of_event|date:"M"}}
+    </div>
+    <hr>
+    <div class="partevtitle">
+      <p> {{event.title_of_event}} </p>
+    </div>
+
+    <div class="partevtime">
+      <p>{{event.time_of_event}}</p>
+    </div>
+    <div class="evphoto">
+      {% if event.event_photo %}
+      <p><img src="{{event.event_photo.url}}" alt="" srcset=""></p>
+      {% endif %}
+    </div>
+
+    {% endfor %}
+  </div>
+  <div class="partevents3">
+    {% for event in selectede3 %}
+    <div class="partevdates">
+      {{event.date_of_event|date:"d"}}
+      {{event.date_of_event|date:"M"}}
+    </div>
+    <hr>
+    <div class="partevtitle">
+      <p> {{event.title_of_event}} </p>
+    </div>
+
+    <div class="partevtime">
+      <p>{{event.time_of_event}}</p>
+    </div>
+    <div class="evphoto">
+      {% if event.event_photo %}
+      <p><img src="{{event.event_photo.url}}" alt="" srcset=""></p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="partevents4">
+    {% for event in selectede4 %}
+    <div class="partevdates">
+      {{event.date_of_event|date:"d"}}
+      {{event.date_of_event|date:"M"}}
+    </div>
+    <hr>
+    <div class="partevtitle">
+      <p> {{event.title_of_event}} </p>
+    </div>
+
+    <div class="partevtime">
+      {% load static %}
+      <p>{{event.time_of_event}}</p>
+    </div>
+    <div class="evphoto">
+      {% if event.event_photo %}
+      <p><img src="{{event.event_photo.url}}" alt="" srcset=""></p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <!-- <div class="toevents"><a href="{% url 'sagapp:events' %}">All Events <i class="fas fa-angle-double-right"
+        aria-hidden="true"></i></a>
+  </div> -->
+</div>
+
+<div class="maind paddingright paddingleft">
+  <div class="maind1">
+    <div class="maind1gr1">
+      <div>
+        <img src="{% static 'sagapp/images/comfortable learning.jpg' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>Learning should be convenient and comfortable.</p>
+      </div>
+    </div>
+    <div class="maind1gr2">
+      <div>
+        <img src="{% static 'sagapp/images/engaged.png' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>We raise world class students who are competent and creative.</p>
+      </div>
+    </div>
+    <div class="maind1gr3">
+      <div>
+        <img src="{% static 'sagapp/images/multivate.jpg' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p> At Sagesse Academy, age is not a barrier; there are different learning methods to suit any age.
+        </p>
+      </div>
+    </div>
+    <div class="maind1gr4">
+      <div>
+        <img src="{% static 'sagapp/images/student-on-podium22.jpg' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>Academic Excellence And Self-confidence is our watchword.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="maind">
+  <div class="maind3 margin-right paddingleft paddingright">
+    <div class="maind3gr1">
+      <div>
+        <img src="{% static 'sagapp/images/care.png' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>We pay special attention to every child because every child is a unique individual.</p>
+      </div>
+    </div>
+    <div class="maind3gr2">
+      <div>
+        <img src="{% static 'sagapp/images/going_cultural_at_sagesse_academy2.jpg' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>Every child's dream is considered</p>
+      </div>
+    </div>
+    <div class="maind3gr3 margin-bot">
+      <div>
+        <img src="{% static 'sagapp/images/startearly.png' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>Pupils have fun learning at Sagesse Academy</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="maind">
+  <div class="maind3 margin-right paddingleft paddingright">
+    <div class="maind3gr1">
+      <div>
+        <img src="{% static 'sagapp/images/care.png' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>We pay special attention to every child because every child is a unique individual.</p>
+      </div>
+    </div>
+    <div class="maind3gr2">
+      <div>
+        <img src="{% static 'sagapp/images/careerday1.png' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>Every child's dream is considered</p>
+      </div>
+    </div>
+    <div class="maind3gr3 margin-bot">
+      <div>
+        <img src="{% static 'sagapp/images/startearly.png' %}" alt="" srcset="" />
+      </div>
+      <div class="maind-pdivs">
+        <p>Pupils have fun learning at Sagesse Academy</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

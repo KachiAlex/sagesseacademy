@@ -1,0 +1,32 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+<title>
+    EVENTS: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+<div class="formtop paddingleft paddingright">
+    <h1 class="events-title"> Edit Events</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{form.date_of_event|as_crispy_field}}</p>
+        <p>{{form.time_of_event|as_crispy_field}}</p>
+        <p>{{form.title_of_event|as_crispy_field}}</p>
+        <p>{{form.event_content|as_crispy_field}}</p>
+        <p class="ephoto">
+            {{form.event_photo|as_crispy_field}}
+        </p>
+
+        <div class="evsubmitDiv">
+            <button type="Submit" class="evsubmitButton">Update</button>
+        </div>
+    </form>
+
+</div>
+
+
+{% endblock content %}

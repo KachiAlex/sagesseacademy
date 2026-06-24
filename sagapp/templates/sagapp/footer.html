@@ -1,0 +1,73 @@
+{% load static %}
+
+<div class="footer">
+  <div class="footer-sect1">
+    <div class="fbrandlogo">
+      <div class="imgsect">
+        <img src="{% static 'sagapp/images/sagesselogo2.jpeg' %}" alt="Sagesse Logo" srcset="" />
+      </div>
+      <div>
+        <p class="p1">SAGESSE</p>
+        <p class="p2">ACADEMY</p>
+      </div>
+    </div>
+    <div class="footaddress margin-top">
+      Locate Us At:<br />
+      <address>
+        Plot 789 Oyewumi John Street, CRD Estate, FHA, Lugbe, Abuja.
+      </address>
+      <p>+2348165558459</p>
+    </div>
+    <div class="mapaddress">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.8458811298715!2d7.360483817443846!3d8.986325900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e736cc13845dd%3A0x749daded1d3c623f!2sSagesse%20academy%20lugbe!5e0!3m2!1sen!2sng!4v1658126345492!5m2!1sen!2sng"
+        width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+  <div class="footer-sect2">
+    <h5>Information for partners</h5>
+    <h5>News and Media Resources</h5>
+    <h5><a href="{% url 'sagapp:privacy' %}"> Privacy Policy</a></h5>
+    <!-- <h5>Second Div</h5>
+    <h5>Second Div</h5>
+    <h5>Second Div</h5>  -->
+  </div>
+  <div class="footer-sect3">
+    <h5>
+      <a href="{% url 'sagapp:admission' %}">Admissions</a>
+    </h5>
+    <h5>
+      <a href="{% url 'sagapp:contact' %}">Contact Us</a>
+    </h5>
+    <h5>Web Privacy Policy</h5>
+    <h5>Maps & Directions</h5>
+    <h5>Emergency Info</h5>
+    <h5>Job Opportunities</h5>
+  </div>
+  <div class="social-links">
+    <div>
+      <a href="#" class="">
+        <i class="fab fa-facebook" style="color: rgb(0, 0, 228);"></i>
+      </a>
+    </div>
+    <div>
+      <a href="#" class="">
+        <i class="fab fa-youtube" style="color: rgb(245, 53, 53);"></i>
+      </a>
+    </div>
+    <div>
+      <a href="#" class="">
+        <i class="fab fa-instagram" style="color: rgb(165, 10, 165)"></i>
+      </a>
+    </div>
+    <div>
+      <a href="#" class="#">
+        <i class="fa-brands fa-twitter  fa-x-twitter" style=" color: rgb(94, 94, 250);"></i>
+      </a>
+    </div>
+  </div>
+  <div class="copyright paddingleft paddingright paddingtop">
+    Copyright &copy; 2023 Sagesse Academy
+  </div>
+</div>

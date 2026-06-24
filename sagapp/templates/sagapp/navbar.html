@@ -1,0 +1,75 @@
+{% load static %}
+
+{% comment %}
+{% url 'hompage/' as home %}
+{% url 'about/' as about %}
+{% url 'admission/' as admission %}
+{% url 'contact/' as contact %}
+{% url 'dashboard/' as dashboard %}
+{% endcomment %}
+
+<div>
+    <header class="header">
+        <div class="brandlogo"><a href="{% url 'sagapp:home' %}">
+                <img src="{% static 'sagapp/images/sagesselogo2.jpeg' %}" alt="" srcset="">
+                <P class="p1">SAGESSE</P>
+                <p class="p2">ACADEMY</p>
+            </a>
+        </div>
+        <nav class="main-nav gen-margin">
+            <ul class="nav-list toggled" id="topnav">
+                <li class="navlinks {% if request.resolver_match.url_name == 'home' %} navactive {% endif %}"><a
+                        href="{% url 'sagapp:home' %}">Home</a>
+                </li>
+
+                <li class="navlinks {% if request.resolver_match.url_name == 'about' %} navactive {% endif %}"><a
+                        href="{% url 'sagapp:about' %}">About</a>
+                </li>
+
+                <li class="navlinks {% if request.resolver_match.url_name == 'admission' %} navactive {% endif %}"><a
+                        href="{% url 'sagapp:admission' %}">Admission</a>
+                </li>
+
+                <li class="navlinks {% if request.resolver_match.url_name == 'contact' %} navactive {% endif %}"><a
+                        href="{% url 'sagapp:contact' %}">Contact</a>
+                </li>
+
+                <li class="navlinks {% if request.resolver_match.url_name == 'facility' %} navactive {% endif %}"><a
+                        href="#">Facility</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="navlinks {% if request.resolver_match.url_name == 'dashboard' %} navactive {% endif %}"><a
+                        href="{% url 'sagapp:dashboard' %}">Dashboard</a>
+                </li>
+
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li class="navlinks dropdown">Logout <span>&#9662;</span>
+                    <div class="dropdownlist">
+                        <p class=""><a href="{% url 'users:logout' %}">Logout</a></p>
+                    </div>
+                </li>
+
+
+                {% else %}
+                <li class="navlinks dropdown">Login <span>&#9662;</span>
+                    <div class="dropdownlist">
+                        <p class=""><a href="{% url 'sagapp:teacherlogin' %}">Teachers
+                                Login</a></p>
+                        <p class=""><a href="{% url 'sagapp:parentlogin' %}">Parents
+                                Login</a></p>
+                        <p class=""><a href="{% url 'users:login' %}">Admins Login</a></p>
+                    </div>
+                </li>
+                {% endif %}
+
+            </ul>
+            <button class="navbutton" id="transmenu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </button>
+        </nav>
+    </header>
+</div>

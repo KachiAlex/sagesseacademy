@@ -1,0 +1,43 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+{% load l10n %}
+
+
+{% block content %}
+<div class="formtop"></div>
+<form action="/add_events/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="evformsclass">
+        <div class="evdivh1">
+            <h1>Add Events</h1>
+        </div>
+        <div>{{err_meaasage}}
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        </div>
+        <div class="evdate">
+            {% localize on %}
+            {{form.date_of_event|as_crispy_field}}
+            {% endlocalize %}
+        </div>
+        <div class="evtime">
+            {{form.time_of_event|as_crispy_field}}
+        </div>
+        <div class="evtitle">
+            {{form.title_of_event|as_crispy_field}}
+        </div>
+        <div class="evcontent">
+            {{form.event_content|as_crispy_field}}
+        </div>
+        <div class="evphoto" type="file">
+            {{form.event_photo|as_crispy_field}}
+        </div>
+        <div class="evsubmitDiv">
+            <button type="Submit" class="evsubmitButton">Add</button> <a href="{% url 'sagapp:events' %}"></a>
+            <button type="Reset" class="evresetButton">Cancel</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

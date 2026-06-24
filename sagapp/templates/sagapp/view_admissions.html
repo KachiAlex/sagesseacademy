@@ -1,0 +1,79 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+<title>
+    ADMISSION LIST: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+<div class="formtop paddingleft paddingright">
+
+    <h1 class="list-contact-title"> Submitted Admissions</h1>
+
+    <table>
+        <tr>
+            <th>SN</th>
+            <th>Date Submitted</th>
+            <th>Name of Pupil</th>
+            <th>Date of Birth</th>
+            <th>Class Applied</th>
+            <th>Student's Address</th>
+            <th>Name of Parent</th>
+            <th>Parent's Phone</th>
+            <th>Parent's Email</th>
+            <th>Parent's Address</th>
+
+        </tr>
+
+
+        {% for admission in all_admissions %}
+        <tr>
+            <td>
+
+            </td>
+            <td class="td-class">
+                {{admission.submitted_on}}
+
+            </td>
+            <td class="td-class">
+                {{admission.fname_of_student}}
+                {{admission.mname_of_student}}
+                {{admission.lname_of_student}}
+            </td>
+            <td class="td-class">
+                {{admission.dob}}
+
+            </td>
+            <td class="td-class">
+                {{admission.class_of_interest}}
+
+            </td>
+            <td class="td-class">
+                {{admission.address_of_student}}
+
+            </td>
+            <td class="td-class">
+                {{admission.parents_name}}
+            </td>
+            <td class="td-class">
+                {{admission.parents_phone}}
+            </td>
+            <td class="td-class">
+                {{admission.parents_email}}
+            </td>
+            <td class="td-class">
+                {{admission.parents_address}}
+            </td>
+            <!-- <td>
+                <a style="color: red; font-weight: bolder; font-size: .8em; border: .05em solid red; border-radius: 1em; padding-inline: .3em; margin-inline-end: .1em;"
+                    href="/delete_contacts/{{contact.id}}">Delete</a>
+            </td> -->
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

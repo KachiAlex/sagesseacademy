@@ -1,0 +1,30 @@
+{% extends 'sagapp/index.html' %}
+
+<!-- {% load crispy_forms_tags %} -->
+{% load static %}
+
+
+{% block title %}
+<title>
+    LOGOUT PAGE: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+<div class="formtop"></div>
+
+<div class="formsclass">
+    <div class="divh1">
+        <h2>Login Page</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <p class="msger" style=" background-color: white;">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+
+
+</div>
+
+{% endblock %}

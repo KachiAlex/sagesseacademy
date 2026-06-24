@@ -1,0 +1,108 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+<title>
+    CONTACT|SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+
+<div class="contactpage margin-top">
+    <div class="contactpage-bg">
+        <img src="{% static 'sagapp/images/sagessbuilding7.jpg' %}" alt="" srcset="">
+    </div>
+    <div class="contacthead paddingleft paddingright">
+        <h1 class="contacthead-title">Contact Us</h1>
+        <div class="contacthead1">
+            <p><i class="fa fa-phone" style="font-size: 1.5em;" aria-hidden="true"></i><a
+                    href="tel:+2348094442056">+2348094442056</a></p>
+            <p><i class="fab fa-whatsapp" style="color: rgb(3, 180, 48);"></i><a
+                    href="https://wa.me/+2348165558459">+2348165558459</a></p>
+            <p><i class="fa fa-envelope" style="color: rgb(253, 128, 128); font-size: 1.7em; padding-inline-end: 0.2em;"
+                    aria-hidden="true"></i><a>contact@sagesseacademy.org</a></p>
+        </div>
+        <!-- <div class="contacthead2">Email <i class="fa-solid fa-envelope"></i>
+            <p>contact@sagesseacademy.com</p>
+        </div> -->
+        <div class="contacthead3">
+            <div class="social-links">
+                <div>
+                    <a href="https://web.facebook.com/sagesseacademy" class="">
+                        <i class="fab fa-facebook" style="color: rgb(0, 0, 228);"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="">
+                        <i class="fab fa-youtube" style="color: rgb(245, 53, 53);"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="">
+                        <i class="fab fa-instagram" style="color: rgb(165, 10, 165)"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="" class="">
+                        <i class="fab fa-twitter" style="color: rgb(94, 94, 250);"></i>
+                    </a>
+                </div>
+                <!-- <div>
+                    <a href="https://wa.me/+2348165558459" class="">
+                        <i class="fab fa-whatsapp" style="color: rgb(3, 180, 48)"></i>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+        <div class="contacthead4">
+            <div class="contact-address">
+                <strong>Visit Us At:</strong><br />
+                <address>
+                    Plot 789 Oyewumi John Street, CRD Estate, FHA, Lugbe, Abuja.
+                </address>
+            </div>
+        </div>
+    </div>
+
+    <div class="contactpage-form">
+        <form action="" method="post">
+
+            {% csrf_token %}
+
+            <div class="contformsclass">
+                <div class="divh1">
+                    <h2>Get In Touch</h2>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p class="msger" style="color: rgb(12, 199, 12); font-weight:bold; background-color: white;">
+                        {{message}}</p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="frname">
+                    {{form.name|as_crispy_field}}
+                </div>
+                <div class="fremail">
+                    {{form.email|as_crispy_field}}
+                </div>
+                <div class="frphone">
+                    {{form.phone|as_crispy_field}}
+                </div>
+                <div class="frreason">
+                    {{form.enquiry_reason|as_crispy_field}}
+                </div>
+                <div class="submitDiv">
+                    <button type="Submit" class="submitButton">Submit</button>
+                    <button type="Reset" class="resetButton">Clear</button>
+                </div>
+            </div>
+        </form>
+        <div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

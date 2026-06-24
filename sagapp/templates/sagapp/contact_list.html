@@ -1,0 +1,43 @@
+{% extends 'sagapp/index.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+<title>
+    CONTACT LIST: SAGESSE ACADEMY
+</title>
+{% endblock title %}
+
+{% block content %}
+<div class="formtop paddingleft paddingright">
+    <h1 class="list-contact-title"> Recieved Message/Enquiries</h1>
+    <div class="list-contact-headers ">
+        <div>S/NO</div>
+        <div>Name</div>
+        <div>Email</div>
+        <div>Phone</div>
+        <div>Message/Enquiry</div>
+    </div>
+    <div class="list-contact">
+        {% for event in all_contacts%}
+        <div>
+            <p></p>
+            <p> {{contact.name}} </p>
+        </div>
+        <div>
+            <p>{{contact.email}}</p>
+        </div>
+        <div>
+            <p>{{contact.phone}}</p>
+        </div>
+        <div>
+            <p>
+                {{contact.enquiry_reason|wordwrap:10}}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
