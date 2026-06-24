@@ -29,8 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-# For Production
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', default='django-insecure-local-dev-key-change-in-production')
 
 ALLOWED_HOSTS = ['sagesseacademy.org', 'www.sagesseacademy.org', 'localhost', '127.0.0.1', '.vercel.app']
 
@@ -96,11 +95,13 @@ WSGI_APPLICATION = 'sag.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# Local dev - SQLite
+# SQLite - uses /tmp on Vercel (writable), local path in dev
+import sys
+VERCEL = os.environ.get('VERCEL', False)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': '/tmp/db.sqlite3' if VERCEL else BASE_DIR / 'db.sqlite3',
     }
 }
 

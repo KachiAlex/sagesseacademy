@@ -1,4 +1,5 @@
 #!/bin/bash
 pip install --upgrade pip --break-system-packages
 pip install -r requirements.txt --break-system-packages
+python manage.py migrate --noinput
 python manage.py collectstatic --noinput
