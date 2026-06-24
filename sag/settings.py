@@ -95,17 +95,30 @@ WSGI_APPLICATION = 'sag.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# SQLite - uses /tmp on Vercel (writable), local path in dev
-import sys
-VERCEL = os.environ.get('VERCEL', False)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/tmp/db.sqlite3' if VERCEL else BASE_DIR / 'db.sqlite3',
+DATABASE_URL = config('DATABASE_URL', default='')
+if DATABASE_URL:
+    import re as _re
+    _m = _re.match(r'postgresql://([^:]+):([^@]+)@([^/]+)/([^?]+)', DATABASE_URL)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': _m.group(4),
+            'USER': _m.group(1),
+            'PASSWORD': _m.group(2),
+            'HOST': _m.group(3),
+            'PORT': '5432',
+            'OPTIONS': {'sslmode': 'require', 'options': '-c search_path=public'},
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
-# In Production Database settings
+# In Production Database settings (legacy reference)
 # DATABASES = {
 #      "default": {
 #          "ENGINE": "django.db.backends.postgresql",
