@@ -2,5 +2,5 @@
 let message_ele = document.querySelector(".msger");
 
 setTimeout(function(){ 
-   message_ele.style.display = "none"; 
+   if (message_ele) message_ele.style.display = "none"; 
 }, 7000);
