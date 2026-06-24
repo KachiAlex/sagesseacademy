@@ -24,8 +24,7 @@ media/
 # Environment variables
 .env
 
-# Static collected files (built by Vercel)
-staticfiles/
+# VPS-backup pre-collected static folder
 static/
 
 # OS

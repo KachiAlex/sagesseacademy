@@ -13,41 +13,28 @@ from django.db.models import F
 import itertools
 
 # Create your views here.
-try:
-    showidids = Eventpicker.objects.filter(picker='First')
-    for ei in showidids:
-        jkt1 = ei.picker_eid
-
-    showidids = Eventpicker.objects.filter(picker='Second')
-    for ei in showidids:
-        jkt2 = ei.picker_eid
-
-    showidids = Eventpicker.objects.filter(picker='Third')
-    for ei in showidids:
-        jkt3 = ei.picker_eid
-
-    showidids = Eventpicker.objects.filter(picker='Fourth')
-    for ei in showidids:
-        jkt4 = ei.picker_eid
-
-    pk1 = jkt1
-    pk2 = jkt2
-    pk3 = jkt3
-    pk4 = jkt4
-except Exception:
-    pk1 = 1
-    pk2 = 2
-    pk3 = 3
-    pk4 = 4
+def _get_event_pk(picker_name, default):
+    try:
+        obj = Eventpicker.objects.filter(picker=picker_name).first()
+        return obj.picker_eid if obj else default
+    except Exception:
+        return default
 
 counter = itertools.count(1)
 
 
 def home(request):
-    selectede1 = Event.objects.filter(pk=pk1)
-    selectede2 = Event.objects.filter(pk=pk2)
-    selectede3 = Event.objects.filter(pk=pk3)
-    selectede4 = Event.objects.filter(pk=pk4)
+    pk1 = _get_event_pk('First', 1)
+    pk2 = _get_event_pk('Second', 2)
+    pk3 = _get_event_pk('Third', 3)
+    pk4 = _get_event_pk('Fourth', 4)
+    try:
+        selectede1 = Event.objects.filter(pk=pk1)
+        selectede2 = Event.objects.filter(pk=pk2)
+        selectede3 = Event.objects.filter(pk=pk3)
+        selectede4 = Event.objects.filter(pk=pk4)
+    except Exception:
+        selectede1 = selectede2 = selectede3 = selectede4 = []
     return render(request,
                   'sagapp/index.html',
                   {'selectede1': selectede1,
